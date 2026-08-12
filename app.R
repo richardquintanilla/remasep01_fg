@@ -339,8 +339,8 @@ ui <- dashboardPage(
           h4("Filtros", style = "padding-left: 15px; color: #ecf0f1; font-weight: normal; margin-bottom: 10px;"),
           
           selectInput("establecimiento", "🏨 Establecimiento",
-                      choices = NULL,
-                      selected = NULL),
+                      choices = opciones_establecimientos,
+                      selected = "all"),
           selectInput("mes", "📅 Mes (múltiple o Todos)",
                       choices = c("Todos" = "all", meses_choices),
                       selected = "all",
@@ -612,18 +612,6 @@ ui <- dashboardPage(
 # ============================================================
 server <- function(input, output, session) {
 
-observe({
-          req(opciones_establecimientos)
-          updateSelectInput(session, "establecimiento", 
-                           choices = opciones_establecimientos, 
-                           selected = "all")
-     })
-     
-     observeEvent(input$limpiar_filtros, {
-          updateSelectInput(session, "establecimiento", selected = "all")
-          updateSelectInput(session, "mes", selected = "all")  # ← Este ya funciona, pero se mantiene
-     })
-     
      observeEvent(input$limpiar_filtros, {
           updateSelectInput(session, "establecimiento", selected = "all")
           updateSelectInput(session, "mes", selected = "all")
