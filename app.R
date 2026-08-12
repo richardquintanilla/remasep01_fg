@@ -31,43 +31,43 @@ encontrar_archivo <- function(nombres_posibles) {
 rutas_remasep25 <- c(
      "remasep/listados/data/remasep25.fst",
      "../remasep/listados/data/remasep25.fst",
-     "/srv/shiny-server/remasep/listados/data/remasep25.fst"
+     "/srv/shiny-server/data/remasep25.fst"
 )
 
 rutas_f1 <- c(
      "remasep/listados/data/remasep01_f1.fst",
      "../remasep/listados/data/remasep01_f1.fst",
-     "/srv/shiny-server/www/remasep01_f1.fst"
+     "/srv/shiny-server/data/remasep01_f1.fst"
 )
 
 rutas_f2 <- c(
      "remasep/listados/data/remasep01_f2.fst",
      "../remasep/listados/data/remasep01_f2.fst",
-     "/srv/shiny-server/www/remasep01_f2.fst"
+     "/srv/shiny-server/data/remasep01_f2.fst"
 )
 
 rutas_g1 <- c(
      "remasep/listados/data/remasep01_g1.fst",
      "../remasep/listados/data/remasep01_g1.fst",
-     "/srv/shiny-server/www/remasep01_g1.fst"
+     "/srv/shiny-server/data/remasep01_g1.fst"
 )
 
 rutas_g2 <- c(
      "remasep/listados/data/remasep01_g2.fst",
      "../remasep/listados/data/remasep01_g2.fst",
-     "/srv/shiny-server/www/remasep01_g2.fst"
+     "/srv/shiny-server/data/remasep01_g2.fst"
 )
 
 rutas_g3 <- c(
      "remasep/listados/data/remasep01_g3.fst",
      "../remasep/listados/data/remasep01_g3.fst",
-     "/srv/shiny-server/www/remasep01_g3.fst"
+     "/srv/shiny-server/data/remasep01_g3.fst"
 )
 
 rutas_config <- c(
      "remasep/listados/data/config.rds",
      "../remasep/listados/data/config.rds",
-     "/srv/shiny-server/www/config.rds"
+     "/srv/shiny-server/data/config.rds"
 )
 
 # Encontrar rutas válidas
