@@ -610,6 +610,8 @@ ui <- dashboardPage(
 # ============================================================
 # SERVER - COMPLETO
 # ============================================================
+server <- function(input, output, session) {
+
 observe({
           req(opciones_establecimientos)
           updateSelectInput(session, "establecimiento", 
@@ -621,8 +623,6 @@ observe({
           updateSelectInput(session, "establecimiento", selected = "all")
           updateSelectInput(session, "mes", selected = "all")  # ← Este ya funciona, pero se mantiene
      })
-
-server <- function(input, output, session) {
      
      observeEvent(input$limpiar_filtros, {
           updateSelectInput(session, "establecimiento", selected = "all")
