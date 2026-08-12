@@ -70,6 +70,12 @@ rutas_config <- c(
      "/srv/shiny-server/data/config.rds"
 )
 
+rutas_opciones <- c(
+     "remasep/listados/data/opciones_establecimientos.rds",
+     "../remasep/listados/data/opciones_establecimientos.rds",
+     "/srv/shiny-server/data/opciones_establecimientos.rds"
+)
+
 # Encontrar rutas válidas
 ruta_remasep25 <- encontrar_archivo(rutas_remasep25)
 ruta_f1 <- encontrar_archivo(rutas_f1)
@@ -78,6 +84,7 @@ ruta_g1 <- encontrar_archivo(rutas_g1)
 ruta_g2 <- encontrar_archivo(rutas_g2)
 ruta_g3 <- encontrar_archivo(rutas_g3)
 ruta_config <- encontrar_archivo(rutas_config)
+ruta_opciones <- encontrar_archivo(rutas_opciones)
 
 # Verificar que se encontraron los archivos
 if(is.null(ruta_remasep25)) stop("❌ No se encontró remasep25.fst")
@@ -87,6 +94,11 @@ if(is.null(ruta_g1)) stop("❌ No se encontró remasep01_g1.fst")
 if(is.null(ruta_g2)) stop("❌ No se encontró remasep01_g2.fst")
 if(is.null(ruta_g3)) stop("❌ No se encontró remasep01_g3.fst")
 if(is.null(ruta_config)) stop("❌ No se encontró config.rds")
+if(is.null(ruta_opciones)) stop("❌ No se encontró opciones_establecimientos.rds")
+
+# Cargar opciones de establecimientos (ANTES del UI)
+opciones_establecimientos <- readRDS(ruta_opciones)
+cat("✅ Opciones de establecimientos cargadas:", length(opciones_establecimientos), "\n")
 
 # Cargar datos desde .fst
 cat("📂 Cargando datos desde .fst...\n")
@@ -121,9 +133,9 @@ remasep01_g3 <- read.fst(ruta_g3, as.data.table = FALSE) %>%
 
 config <- readRDS(ruta_config)
 
-# Extraer configuraciones
-opciones_establecimientos <- config$opciones_establecimientos
-opciones_establecimientos <- c("Todos" = "all", opciones_establecimientos)
+# Extraer configuraciones (YA NO se carga opciones desde config)
+# opciones_establecimientos <- config$opciones_establecimientos  ← ELIMINADO
+# opciones_establecimientos <- c("Todos" = "all", opciones_establecimientos)  ← ELIMINADO
 
 orden_tabla_f1 <- config$orden_tabla_f1
 orden_tabla_f2 <- config$orden_tabla_f2
@@ -136,7 +148,6 @@ meses_nombres <- config$meses_nombres
 
 cat("✅ Datos cargados exitosamente\n")
 cat("📊 REMASEP25:", nrow(remasep25), "filas\n")
-cat("📊 Opciones de establecimientos:", length(opciones_establecimientos), "\n")
 
 # ============================================================
 # RESTO DE CONFIGURACIONES
